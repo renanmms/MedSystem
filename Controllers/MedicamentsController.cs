@@ -10,18 +10,18 @@ namespace MedSystem.Controllers
     [Route("api/[controller]")]
     public class MedicamentsController : ControllerBase
     {
-        //private readonly IMedicamentRepository _repository;
+        private readonly IMedicamentRepository _repository;
 
-        public MedicamentsController()
+        public MedicamentsController(IMedicamentRepository repository)
         {
-            //_repository = repository;
+            _repository = repository;
         }
         // GET: MedicamentsController
         [HttpGet("{id}")]
         public IActionResult Get(Guid id)
         {
-            //var medicament = _repository.Get(id);
-            return Ok();
+            var medicament = _repository.Get(id);
+            return Ok(medicament);
         }
 
         // GET: MedicamentsController/Details/5
@@ -31,13 +31,18 @@ namespace MedSystem.Controllers
         
 
         // POST: MedicamentsController/Create
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="model">
+        /// </param>
+        /// <returns></returns>
         [HttpPost]
         public IActionResult Post(AddMedicamentInputModel model)
         {
-            //var medicament = new Medicament(model.Name, model.Dose, model.Description);
-            //_repository.Create(medicament);
-            //return CreatedAtAction("Post", new {Id = medicament.Id});
-            return Ok();
+            var medicament = new Medicament(model.Name, model.Dose, model.Description);
+            _repository.Create(medicament);
+            return CreatedAtAction("Post", new {Id = medicament.Id});
         }
 
         // GET: MedicamentsController/Edit/5
