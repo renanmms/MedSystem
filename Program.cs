@@ -1,4 +1,5 @@
 using MedSystem.Persistence;
+using MedSystem.Persistence.Repository;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,6 +18,9 @@ builder.Services.AddDbContext<MedSystemDbContext>(options =>
     options.UseSqlServer(connectionString);
 });
 
+
+builder.Services.AddScoped<IMedicamentRepository, MedicamentRepository>();
+builder.Services.AddScoped<IPatientRepository, PatientRepository>();
 
 
 var app = builder.Build();
