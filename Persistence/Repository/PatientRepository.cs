@@ -12,6 +12,7 @@ namespace MedSystem.Persistence.Repository
         public void Create(Patient patient)
         {
             _context.Patients.Add(patient);
+            _context.SaveChanges();
         }
 
         public List<Patient> GetAll()

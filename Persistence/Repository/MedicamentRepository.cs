@@ -14,6 +14,7 @@ namespace MedSystem.Persistence.Repository
         public void Create(Medicament medicament)
         {
             _context.Medicaments.Add(medicament);
+            _context.SaveChanges();
         }
 
         public Medicament Get(Guid id)

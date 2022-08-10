@@ -2,8 +2,8 @@
 {
     public class AddMedicamentInputModel
     {
-        public string Name { get; private set; }
-        public string Dose { get; private set; }
-        public string Description { get; private set; }
+        public string Name { get; set; }
+        public string Dose { get; set; }
+        public string Description { get; set; }
     }
 }

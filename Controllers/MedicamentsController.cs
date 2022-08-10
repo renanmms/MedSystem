@@ -17,15 +17,26 @@ namespace MedSystem.Controllers
             _repository = repository;
         }
         // GET: MedicamentsController
-        [HttpGet("{id}")]
+        [HttpGet("Details/{id}")]
         public IActionResult Get(Guid id)
         {
             var medicament = _repository.Get(id);
+            
+            if(medicament == null)
+            {
+                return NotFound();
+            }
+
             return Ok(medicament);
         }
 
         // GET: MedicamentsController/Details/5
-        
+        [HttpGet("Details")]
+        public IActionResult GetAll()
+        {
+            var medicaments = _repository.GetAll();
+            return Ok(medicaments);
+        }
 
         // GET: MedicamentsController/Create
         
@@ -34,15 +45,20 @@ namespace MedSystem.Controllers
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="model">
-        /// </param>
-        /// <returns></returns>
+        /// <remarks>
+        /// Request Body Example:
+        /// "name": "Tylenol",
+        /// "dose": "10 mg",
+        /// "description": "Medicament for headches or fewer symptoms"
+        /// </remarks>
+        /// <param name="model"> Medicament data </param>
+        /// <returns> Created Object </returns>
         [HttpPost]
         public IActionResult Post(AddMedicamentInputModel model)
         {
             var medicament = new Medicament(model.Name, model.Dose, model.Description);
             _repository.Create(medicament);
-            return CreatedAtAction("Post", new {Id = medicament.Id});
+            return CreatedAtAction("Post", medicament.Id);
         }
 
         // GET: MedicamentsController/Edit/5

@@ -4,6 +4,7 @@
     {
         public Patient(string name, bool isMedicated)
         {
+            Id = Guid.NewGuid();
             Name = name;
             IsMedicated = isMedicated;
             CreatedAt = DateTime.Now;

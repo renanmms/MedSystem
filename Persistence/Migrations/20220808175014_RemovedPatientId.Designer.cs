@@ -4,6 +4,7 @@ using MedSystem.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MedSystem.Persistence.Migrations
 {
     [DbContext(typeof(MedSystemDbContext))]
-    partial class MedSystemDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220808175014_RemovedPatientId")]
+    partial class RemovedPatientId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -82,7 +84,7 @@ namespace MedSystem.Persistence.Migrations
                     b.HasOne("MedSystem.Entities.Patient", "Patient")
                         .WithMany("Medicaments")
                         .HasForeignKey("PatientId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Patient");

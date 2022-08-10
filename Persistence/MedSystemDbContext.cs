@@ -22,8 +22,8 @@ namespace MedSystem.Persistence
                 .HasMany(p => p.Medicaments)
                 .WithOne(m => m.Patient)
                 .HasForeignKey(m => m.PatientId)
-                .HasPrincipalKey(p => p.Id);
-
+                .HasPrincipalKey(p => p.Id)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }
