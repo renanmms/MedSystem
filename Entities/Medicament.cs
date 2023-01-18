@@ -2,12 +2,13 @@
 {
     public class Medicament
     {
-        public Medicament(string name, string dose, string description)
+        public Medicament(string name, string dose, string description, Guid patientId)
         {
             Id = Guid.NewGuid();
             Name = name;
             Dose = dose;
             Description = description;
+            PatientId = patientId;
 
             CreatedAt = DateTime.Now;
             NumberOfPatients = 0;

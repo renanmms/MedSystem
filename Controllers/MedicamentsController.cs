@@ -31,7 +31,7 @@ namespace MedSystem.Controllers
         }
 
         // GET: MedicamentsController/Details/5
-        [HttpGet("Details")]
+        [HttpGet]
         public IActionResult GetAll()
         {
             var medicaments = _repository.GetAll();
@@ -56,9 +56,9 @@ namespace MedSystem.Controllers
         [HttpPost]
         public IActionResult Post(AddMedicamentInputModel model)
         {
-            var medicament = new Medicament(model.Name, model.Dose, model.Description);
+            var medicament = new Medicament(model.Name, model.Dose, model.Description, model.PatientId);
             _repository.Create(medicament);
-            return CreatedAtAction("Post", medicament.Id);
+            return CreatedAtAction("Post", new { medicament.Id, medicament.Name });
         }
 
         // GET: MedicamentsController/Edit/5
