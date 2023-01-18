@@ -59,7 +59,7 @@ namespace MedSystem.Controllers
         {
             var patient = new Patient(model.Name, model.IsMedicated);
             _repository.Create(patient);
-            return CreatedAtAction("Post", patient.Id);
+            return CreatedAtAction("Post", new { patient.Id, patient.Name, patient.CreatedAt});
         }
 
         // GET: PatientsController/Edit/5
