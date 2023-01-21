@@ -1,4 +1,5 @@
 ﻿using MedSystem.Entities;
+using MedSystem.Models;
 
 namespace MedSystem.Persistence.Repository
 {
@@ -9,5 +10,6 @@ namespace MedSystem.Persistence.Repository
         Medicament Get(Guid id);
         void Create(Medicament medicament);
         int NumberOfPatients(Guid id);
+        Medicament EditMedicament(EditMedicamentInputModel model);
     }
 }
