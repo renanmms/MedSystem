@@ -62,7 +62,12 @@ namespace MedSystem.Controllers
         }
 
         // GET: MedicamentsController/Edit/5
-        
+        [HttpPut]
+        public IActionResult Put(EditMedicamentInputModel model)
+        {
+            var medicament = _repository.EditMedicament(model);
+            return Created($"api/MedicamentsController/Edit/{model.Id}", medicament);
+        }
 
         // POST: MedicamentsController/Edit/5
         
