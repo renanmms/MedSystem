@@ -51,5 +51,12 @@ namespace MedSystem.Persistence.Repository
 
             return medicament;
         }
+
+        public void DeleteMedicament(Guid id)
+        {
+            var medicament = _context.Medicaments.SingleOrDefault(m => m.Id == id);
+            _context.Entry(medicament).State = EntityState.Deleted;
+            _context.SaveChanges();
+        }
     }
 }

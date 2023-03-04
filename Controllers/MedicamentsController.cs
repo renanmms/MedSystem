@@ -73,7 +73,12 @@ namespace MedSystem.Controllers
         
 
         // GET: MedicamentsController/Delete/5
-        
+        [HttpDelete]
+        public IActionResult Delete(Guid id){
+            _repository.DeleteMedicament(id);
+            
+            return NoContent();
+        }
 
         // POST: MedicamentsController/Delete/5
         

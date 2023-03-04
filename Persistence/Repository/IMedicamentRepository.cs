@@ -11,5 +11,6 @@ namespace MedSystem.Persistence.Repository
         void Create(Medicament medicament);
         int NumberOfPatients(Guid id);
         Medicament EditMedicament(EditMedicamentInputModel model);
+        void DeleteMedicament(Guid id);
     }
 }
