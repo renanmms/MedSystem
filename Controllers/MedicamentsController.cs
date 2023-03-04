@@ -19,7 +19,7 @@ namespace MedSystem.Controllers
             _repository = repository;
             _mapper = mapper;
         }
-        // GET: MedicamentsController
+
         [HttpGet("Details/{id}")]
         public IActionResult Get(Guid id)
         {
@@ -33,7 +33,6 @@ namespace MedSystem.Controllers
             return Ok(medicament);
         }
 
-        // GET: MedicamentsController/Details/5
         [HttpGet]
         public IActionResult GetAll()
         {
@@ -41,21 +40,6 @@ namespace MedSystem.Controllers
             return Ok(medicaments);
         }
 
-        // GET: MedicamentsController/Create
-        
-
-        // POST: MedicamentsController/Create
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// Request Body Example:
-        /// "name": "Tylenol",
-        /// "dose": "10 mg",
-        /// "description": "Medicament for headches or fewer symptoms"
-        /// </remarks>
-        /// <param name="model"> Medicament data </param>
-        /// <returns> Created Object </returns>
         [HttpPost]
         public IActionResult Post(AddMedicamentInputModel model)
         {
@@ -64,7 +48,6 @@ namespace MedSystem.Controllers
             return CreatedAtAction("Post", new { medicament.Id, medicament.Name });
         }
 
-        // GET: MedicamentsController/Edit/5
         [HttpPut]
         public IActionResult Put(EditMedicamentInputModel model)
         {
@@ -73,10 +56,6 @@ namespace MedSystem.Controllers
             return NoContent();
         }
 
-        // POST: MedicamentsController/Edit/5
-        
-
-        // GET: MedicamentsController/Delete/5
         [HttpDelete]
         public IActionResult Delete(Guid id){
             _repository.DeleteMedicament(id);
@@ -84,7 +63,5 @@ namespace MedSystem.Controllers
             return NoContent();
         }
 
-        // POST: MedicamentsController/Delete/5
-        
     }
 }

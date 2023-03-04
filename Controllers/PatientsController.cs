@@ -16,7 +16,7 @@ namespace MedSystem.Controllers
         {
             _repository = repository;
         }
-        // GET: PatientsController
+
         [HttpGet]
         public IActionResult GetAll()
         {
@@ -30,7 +30,6 @@ namespace MedSystem.Controllers
             return Ok(patients);
         }
 
-        // GET: PatientsController/Details/5
         [HttpGet("Details/{id}")]
         public IActionResult GetById(Guid id) {
             var patient = _repository.GetById(id);
@@ -42,18 +41,6 @@ namespace MedSystem.Controllers
             return Ok(patient);
         }
 
-        // GET: PatientsController/Create
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// "name": "Renan",
-        /// "isMedicated": false
-        /// </remarks>
-        /// <param name="model"></param>
-        /// <returns>Patient Created</returns>
-        // POST: PatientsController/Create
         [HttpPost("Create")]
         public IActionResult Post(AddPatientInputModel model)
         {
@@ -61,17 +48,6 @@ namespace MedSystem.Controllers
             _repository.Create(patient);
             return CreatedAtAction("Post", new { patient.Id, patient.Name, patient.CreatedAt});
         }
-
-        // GET: PatientsController/Edit/5
-
-
-        // POST: PatientsController/Edit/5
-
-
-        // GET: PatientsController/Delete/5
-
-
-        // POST: PatientsController/Delete/5
 
     }
 }
