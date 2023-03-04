@@ -49,5 +49,11 @@ namespace MedSystem.Controllers
             return CreatedAtAction("Post", new { patient.Id, patient.Name, patient.CreatedAt});
         }
 
+        [HttpPut("Medicate/{id}")]
+        public IActionResult Put(Guid id){
+            _repository.IsMedicated(id);
+            return NoContent();
+        }
+
     }
 }

@@ -31,6 +31,7 @@ namespace MedSystem.Persistence.Repository
         {
             var patient = _context.Patients.SingleOrDefault(p => p.Id == id);
             patient.IsMedicated = true;
+            _context.SaveChanges();
         }
 
         public int MedicamentsQuantity(Guid id)
