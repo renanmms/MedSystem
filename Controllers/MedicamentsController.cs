@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using MedSystem.Persistence.Repository;
 using MedSystem.Models;
 using MedSystem.Entities;
+using AutoMapper;
 
 namespace MedSystem.Controllers
 {
@@ -11,10 +12,12 @@ namespace MedSystem.Controllers
     public class MedicamentsController : ControllerBase
     {
         private readonly IMedicamentRepository _repository;
+        private readonly IMapper _mapper;
 
-        public MedicamentsController(IMedicamentRepository repository)
+        public MedicamentsController(IMedicamentRepository repository, IMapper mapper)
         {
             _repository = repository;
+            _mapper = mapper;
         }
         // GET: MedicamentsController
         [HttpGet("Details/{id}")]
@@ -56,7 +59,7 @@ namespace MedSystem.Controllers
         [HttpPost]
         public IActionResult Post(AddMedicamentInputModel model)
         {
-            var medicament = new Medicament(model.Name, model.Dose, model.Description, model.PatientId);
+            var medicament = _mapper.Map<Medicament>(model);
             _repository.Create(medicament);
             return CreatedAtAction("Post", new { medicament.Id, medicament.Name });
         }
@@ -65,8 +68,9 @@ namespace MedSystem.Controllers
         [HttpPut]
         public IActionResult Put(EditMedicamentInputModel model)
         {
-            var medicament = _repository.EditMedicament(model);
-            return Created($"api/MedicamentsController/Edit/{model.Id}", medicament);
+            var medicament = _mapper.Map<Medicament>(model);
+            _repository.EditMedicament(medicament);
+            return NoContent();
         }
 
         // POST: MedicamentsController/Edit/5
