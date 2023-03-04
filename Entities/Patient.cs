@@ -15,7 +15,10 @@
         public bool IsMedicated { get; set; }
         public DateTime CreatedAt { get; private set; }
         public List<Medicament> Medicaments { get; private set; }
-
-        //public int MedicamentsQuantity { get; private set; }
+        private int medicamentQuantity;
+        public int MedicamentsQuantity { 
+            get { return medicamentQuantity; }
+            set { medicamentQuantity = value; }
+        }
     }
 }

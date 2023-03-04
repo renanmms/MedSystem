@@ -30,7 +30,10 @@ namespace MedSystem.Persistence.Repository
         public void IsMedicated(Guid id)
         {
             var patient = _context.Patients.SingleOrDefault(p => p.Id == id);
-            patient.IsMedicated = true;
+            if(!patient.IsMedicated)
+                patient.IsMedicated = true;
+
+            patient.MedicamentsQuantity++;
             _context.SaveChanges();
         }
 
