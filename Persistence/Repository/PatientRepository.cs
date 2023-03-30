@@ -34,6 +34,8 @@ namespace MedSystem.Persistence.Repository
                 patient.IsMedicated = true;
 
             patient.MedicamentsQuantity++;
+
+            _context.Entry(patient).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
             _context.SaveChanges();
         }
 
