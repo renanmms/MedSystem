@@ -22,5 +22,10 @@
         public int NumberOfPatients { get; private set; }
         public Guid PatientId { get; set; }
         public Patient Patient { get; private set; }
+
+        public void AddNumberOfPatient()
+        {
+            NumberOfPatients++;
+        }
     }
 }
