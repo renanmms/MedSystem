@@ -9,7 +9,7 @@ namespace MedSystem.Persistence.Repository
         List<Medicament> GetAll();
         Medicament Get(Guid id);
         void Create(Medicament medicament);
-        int NumberOfPatients(Guid id);
+        int AddPatient(Guid id);
         void EditMedicament(Medicament medicament);
         void DeleteMedicament(Guid id);
     }

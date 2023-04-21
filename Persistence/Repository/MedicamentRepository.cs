@@ -31,10 +31,14 @@ namespace MedSystem.Persistence.Repository
             return medicaments;
         }
 
-        public int NumberOfPatients(Guid id)
+        public int AddPatient(Guid id)
         {
-            var numberOfPatients = _context.Medicaments.ToList().Count();
-            return numberOfPatients;
+            var medicament = _context.Medicaments.SingleOrDefault(m => m.Id == id);
+            medicament.AddNumberOfPatient();
+
+            _context.Entry(medicament).State = EntityState.Modified;
+            _context.SaveChanges();
+            return medicament.NumberOfPatients;
         }
 
         public void EditMedicament(Medicament medicament)

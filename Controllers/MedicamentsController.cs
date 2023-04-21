@@ -48,6 +48,12 @@ namespace MedSystem.Controllers
             return CreatedAtAction("Post", new { medicament.Id, medicament.Name });
         }
 
+        [HttpPost("Medicate")]
+        public IActionResult Post(Guid id){
+            _repository.AddPatient(id);
+            return Ok();
+        }
+
         [HttpPut]
         public IActionResult Put(EditMedicamentInputModel model)
         {
