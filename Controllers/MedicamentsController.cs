@@ -20,7 +20,7 @@ namespace MedSystem.Controllers
             _mapper = mapper;
         }
 
-        [HttpGet("Details/{id}")]
+        [HttpGet("{id}/details")]
         public IActionResult Get(Guid id)
         {
             var medicament = _repository.Get(id);
@@ -48,7 +48,7 @@ namespace MedSystem.Controllers
             return CreatedAtAction("Post", new { medicament.Id, medicament.Name });
         }
 
-        [HttpPost("Medicate")]
+        [HttpPost("{id}/medicate")]
         public IActionResult Post(Guid id){
             _repository.AddPatient(id);
             return Ok();

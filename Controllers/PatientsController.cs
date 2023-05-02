@@ -30,7 +30,7 @@ namespace MedSystem.Controllers
             return Ok(patients);
         }
 
-        [HttpGet("Details/{id}")]
+        [HttpGet("{id}/details")]
         public IActionResult GetById(Guid id) {
             var patient = _repository.GetById(id);
 
@@ -41,7 +41,7 @@ namespace MedSystem.Controllers
             return Ok(patient);
         }
 
-        [HttpPost("Create")]
+        [HttpPost("create")]
         public IActionResult Post(AddPatientInputModel model)
         {
             var patient = new Patient(model.Name, model.IsMedicated);
@@ -49,7 +49,7 @@ namespace MedSystem.Controllers
             return CreatedAtAction("Post", new { patient.Id, patient.Name, patient.CreatedAt});
         }
 
-        [HttpPut("Medicate/{id}")]
+        [HttpPut("{id}/medicate")]
         public IActionResult Put(Guid id){
             _repository.IsMedicated(id);
             return NoContent();
