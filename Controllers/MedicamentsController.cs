@@ -20,7 +20,7 @@ namespace MedSystem.Controllers
             _mapper = mapper;
         }
 
-        [HttpGet("{id}/details")]
+        [HttpGet("{id}")]
         public IActionResult Get(Guid id)
         {
             var medicament = _repository.Get(id);
@@ -62,7 +62,7 @@ namespace MedSystem.Controllers
             return NoContent();
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}/delete")]
         public IActionResult Delete(Guid id){
             _repository.DeleteMedicament(id);
             

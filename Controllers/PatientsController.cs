@@ -41,7 +41,7 @@ namespace MedSystem.Controllers
             return Ok(patient);
         }
 
-        [HttpPost("create")]
+        [HttpPost]
         public IActionResult Post(AddPatientInputModel model)
         {
             var patient = new Patient(model.Name, model.IsMedicated);
