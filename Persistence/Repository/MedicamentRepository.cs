@@ -1,5 +1,4 @@
 ﻿using MedSystem.Entities;
-using MedSystem.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace MedSystem.Persistence.Repository

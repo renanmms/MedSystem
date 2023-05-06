@@ -1,4 +1,3 @@
-using System;
 using AutoMapper;
 using MedSystem.Entities;
 using MedSystem.Models;

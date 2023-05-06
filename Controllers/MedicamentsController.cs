@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using MedSystem.Persistence.Repository;
 using MedSystem.Models;
 using MedSystem.Entities;
